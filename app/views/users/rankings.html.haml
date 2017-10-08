@@ -1,0 +1,14 @@
+.row
+  .col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3.col-sm-6.col-sm-offset-3
+    %h1.text-center User rankings
+    %h4.text-center Most comments in the last week
+    %table.table.table-striped
+      %thead
+        %tr
+          %th #
+          %th Name
+      %tbody
+        - top_users.each_with_index do |user, i|
+          %tr
+            %td= i + 1
+            %td= user.name

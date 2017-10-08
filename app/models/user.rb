@@ -27,4 +27,12 @@ class User < ApplicationRecord
   has_many :movies, through: :comments
 
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
+
+  def self.top_commenters
+    User.joins(:comments)
+        .where(comments: { created_at: (Time.now - 7.days)..Time.now })
+        .group("comments.user_id")
+        .order('COUNT(comments.user_id) DESC')
+        .limit(10)
+  end
 end
