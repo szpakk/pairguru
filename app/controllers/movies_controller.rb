@@ -2,7 +2,8 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:send_info]
 
   expose_decorated(:movies) { Movie.all }
-  expose(:movie)
+  expose_decorated(:movie)
+  expose(:comment) { Comment.new }
 
   def send_info
     MovieInfoMailer.send_info(current_user, movie).deliver_now

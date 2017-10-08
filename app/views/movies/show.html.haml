@@ -3,3 +3,13 @@
   = movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(movie), class: 'btn btn-sm btn-default'
+
+%h3 Comments
+- if user_signed_in? && !current_user.movies.include?(movie)
+  = render 'comments/comments_form'
+- elsif !user_signed_in?
+  %p Log in to add your comment!
+- else
+  %p You have already commented on this movie. Delete your comment in order to add a new one.
+= render 'comments/comments_table'
+  

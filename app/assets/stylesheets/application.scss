@@ -1,2 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.v-resize {
+  resize: vertical;
+  min-height: 150px;
+}

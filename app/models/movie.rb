@@ -14,5 +14,15 @@
 
 class Movie < ApplicationRecord
   belongs_to :genre
+  has_many   :comments
+
   validates_with TitleBracketsValidator
+
+  def comments_desc
+    self.comments.order("created_at DESC").decorate
+  end
+
+  def has_comments?
+    !self.comments.empty?
+  end
 end

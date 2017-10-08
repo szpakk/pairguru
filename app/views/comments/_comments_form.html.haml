@@ -1,0 +1,4 @@
+= form_for [movie, comment], html: { class: 'form-group'} do |f|
+  = f.label :body, "Post a new comment"
+  = f.text_area :body, class: 'form-control v-resize'
+  = f.submit "Save", class: 'btn btn-default'
